@@ -1,0 +1,6 @@
+elma,25
+portakal,100
+kiraz,200
+vişne,250
+erik,100
+mandalina,50

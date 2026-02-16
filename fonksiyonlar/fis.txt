@@ -1,0 +1,6 @@
+elma 3 kg = 75 TL
+portakal 2 kg = 200 TL
+kiraz 1 kg = 200 TL
+erik 3 kg = 300 TL
+----------------------
+Toplam Tutar ==> 775 TL

@@ -1,0 +1,47 @@
+class manav:
+    def __init__(self):
+        self.liste = {}
+        self.toplam = 0
+
+    # Ürün ekleme
+    def urun_al(self, urun_adi, kg):
+        self.liste[urun_adi] = kg
+
+    # Fiş yazdırma
+    def fis_yazdir(self):
+
+        urun_fiyat = {}
+        self.toplam = 0   # her fişte sıfırlayalım
+
+        # Ürün fiyatlarını dosyadan okuma
+        try:
+            with open("urunler.txt", "r") as alinan:
+                for satir in alinan:
+                    satir = satir.strip()
+                    parca = satir.split(",")
+
+                    urun = parca[0]
+                    fiyat = int(parca[1])
+
+                    urun_fiyat[urun] = fiyat
+
+        except:
+            print("urunler.txt dosyası veya yolu bulunamadı.")
+            return   # hata varsa devam etmesin
+
+        # Fiş yazma (TRY BLOĞUNUN DIŞINDA!)
+        with open("fis.txt", "w") as fis:
+
+            for urun, kg in self.liste.items():
+
+                if urun in urun_fiyat:
+
+                    tutar = urun_fiyat[urun] * kg
+                    self.toplam += tutar
+
+                    fis.write(f"{urun} {kg} kg = {tutar} TL\n")
+
+            fis.write("----------------------\n")
+            fis.write(f"Toplam tutar ==> {self.toplam} TL\n")
+
+        print("Fiş başarıyla oluşturuldu.")
